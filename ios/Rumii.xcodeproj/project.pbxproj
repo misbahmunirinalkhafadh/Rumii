@@ -44,6 +44,10 @@
 		DB7E826003DD015A0CFA52CB /* Pods-Rumii-RumiiTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rumii-RumiiTests.debug.xcconfig"; path = "Target Support Files/Pods-Rumii-RumiiTests/Pods-Rumii-RumiiTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E7D00E942213DD65AB19B7C4 /* Pods-Rumii.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rumii.debug.xcconfig"; path = "Target Support Files/Pods-Rumii/Pods-Rumii.debug.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		FA02E6E22691C1C9003502D3 /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = MaterialCommunityIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; };
+		FA02E6E32691C598003502D3 /* Feather.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Feather.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Feather.ttf"; sourceTree = "<group>"; };
+		FA02E6E42691C598003502D3 /* Ionicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Ionicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
+		FA02E6E52691C598003502D3 /* FontAwesome5_Solid.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = FontAwesome5_Solid.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Solid.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +90,7 @@
 		13B07FAE1A68108700A75B9A /* Rumii */ = {
 			isa = PBXGroup;
 			children = (
+				FA02E6E12691C198003502D3 /* Fonts */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
@@ -114,7 +119,6 @@
 				DB7E826003DD015A0CFA52CB /* Pods-Rumii-RumiiTests.debug.xcconfig */,
 				C8451AC3D5D2D1B6574CEA53 /* Pods-Rumii-RumiiTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -147,6 +151,17 @@
 				00E356EE1AD99517003FC87E /* RumiiTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		FA02E6E12691C198003502D3 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				FA02E6E32691C598003502D3 /* Feather.ttf */,
+				FA02E6E52691C598003502D3 /* FontAwesome5_Solid.ttf */,
+				FA02E6E42691C598003502D3 /* Ionicons.ttf */,
+				FA02E6E22691C1C9003502D3 /* MaterialCommunityIcons.ttf */,
+			);
+			name = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
