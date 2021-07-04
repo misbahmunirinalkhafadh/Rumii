@@ -2,7 +2,7 @@ import React from 'react'
 import { TextInput } from 'react-native';
 import { StyleSheet, Button, View } from 'react-native'
 
-export default function index() {
+const SignIn = () => {
     const [username, setUsername] = React.useState('');
     const [password, setPassword] = React.useState('');
 
@@ -25,5 +25,6 @@ export default function index() {
         </View>
     )
 }
+export default SignIn;
 
 const styles = StyleSheet.create({})
