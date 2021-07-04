@@ -1,19 +1,16 @@
 import React from 'react'
-import { StyleSheet, Text } from 'react-native'
+import { StyleSheet, Text, View } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { FocusAwareStatusBar } from '../../hooks/useIsFocused';
-import { mdiAccount } from '@mdi/js'
 
-const Home = () => {
+export default function Notifications() {
     return (
-        <SafeAreaView style={[styles.container, { backgroundColor: '#6a51ae' }]}>
-            <FocusAwareStatusBar barStyle="light-content" backgroundColor="#6a51ae" />
-            <Text>Home Screens</Text>
+        <SafeAreaView style={styles.container}>
+            <FocusAwareStatusBar barStyle="dark-content" backgroundColor="#ecf0f1" />
+            <Text>Notifications</Text>
         </SafeAreaView>
     )
 }
-
-export default Home;
 
 const styles = StyleSheet.create({
     container: {
