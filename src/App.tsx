@@ -12,7 +12,7 @@ import {
   SignUpScreen,
   WelcomeScreen,
   SplashScreen
-} from './pages';
+} from './screens';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -35,11 +35,19 @@ const screens = {
       key: 1,
       name: 'Home',
       component: HomeScreen,
+      icons: {
+        focus: 'home-variant',
+        infocus: 'home-variant-outline'
+      },
     },
     {
       key: 2,
       name: 'Notifications',
       component: NotificationsScreen,
+      icons: {
+        focus: 'bell',
+        infocus: 'bell-outline'
+      },
       options: {
         tabBarBadge: 3
       }
@@ -48,6 +56,10 @@ const screens = {
       key: 3,
       name: 'Profile',
       component: ProfileScreen,
+      icons: {
+        focus: 'account-circle',
+        infocus: 'account-circle-outline'
+      },
     },
   ],
   user: [
@@ -69,32 +81,36 @@ const screens = {
   ]
 }
 
-let authScreens = screens.auth.map(obj => {
+let authScreens = screens.auth.map(function (obj) {
   return (<Stack.Screen name={obj.name} component={obj.component} key={obj.key} />)
 })
-let tabsScreens = screens.tabs.map(obj => {
+let tabsScreens = screens.tabs.map(function (obj) {
   return (<Tab.Screen name={obj.name} component={obj.component} options={obj.options} key={obj.key} />)
 })
-let userScreens = screens.user.map(obj => {
+let userScreens = screens.user.map(function (obj) {
   return (<Stack.Screen name={obj.name} component={obj.component} key={obj.key} />)
 })
 
 function MyTabs() {
   return (
     <Tab.Navigator
-      initialRouteName="Home"
+      initialRouteName={screens.tabs[0].name}
       screenOptions={({ route }) => ({
         tabBarIcon: ({ focused, color, size }) => {
           let iconName = "";
 
-          if (route.name === 'Home') {
+          if (route.name === screens.tabs[0].name) {
             iconName = focused
-              ? 'home-variant'
-              : 'home-variant-outline';
-          } else if (route.name === 'Notifications') {
-            iconName = focused ? 'bell' : 'bell-outline';
-          } else if (route.name === 'Profile') {
-            iconName = focused ? 'account-circle' : 'account-circle-outline';
+              ? screens.tabs[0].icons.focus
+              : screens.tabs[0].icons.infocus;
+          } else if (route.name === screens.tabs[1].name) {
+            iconName = focused
+              ? screens.tabs[1].icons.focus
+              : screens.tabs[1].icons.infocus;
+          } else if (route.name === screens.tabs[2].name) {
+            iconName = focused
+              ? screens.tabs[2].icons.focus
+              : screens.tabs[2].icons.infocus;
           }
 
           return <MaterialCommunityIcons name={iconName} size={size} color={color} />;
