@@ -7,7 +7,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import Feather from 'react-native-vector-icons/Feather';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
-const Home = () => {
+export default function Home() {
     return (
         <SafeAreaView style={[styles.container, { backgroundColor: '#6a51ae' }]}>
             <FocusAwareStatusBar barStyle="light-content" backgroundColor="#6a51ae" />
@@ -19,8 +19,6 @@ const Home = () => {
         </SafeAreaView>
     )
 }
-
-export default Home;
 
 const styles = StyleSheet.create({
     container: {

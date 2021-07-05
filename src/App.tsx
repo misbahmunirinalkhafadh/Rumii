@@ -49,7 +49,7 @@ const screens = {
         infocus: 'bell-outline'
       },
       options: {
-        tabBarBadge: 3
+        tabBarBadge: 3,
       }
     },
     {
@@ -57,8 +57,8 @@ const screens = {
       name: 'Profile',
       component: ProfileScreen,
       icons: {
-        focus: 'account-circle',
-        infocus: 'account-circle-outline'
+        focus: 'account',
+        infocus: 'account-outline'
       },
     },
   ],
@@ -72,23 +72,29 @@ const screens = {
       key: 2,
       name: 'Welcome',
       component: WelcomeScreen,
+      options: {
+        headerShown: false
+      }
     },
     {
       key: 3,
       name: 'Tabs',
       component: MyTabs,
+      options: {
+        headerShown: false
+      }
     },
   ]
 }
 
 let authScreens = screens.auth.map(function (obj) {
-  return (<Stack.Screen name={obj.name} component={obj.component} key={obj.key} />)
+  return (<Stack.Screen name={obj.name} component={obj.component} options={{ headerShown: false }} key={obj.key} />)
 })
 let tabsScreens = screens.tabs.map(function (obj) {
   return (<Tab.Screen name={obj.name} component={obj.component} options={obj.options} key={obj.key} />)
 })
 let userScreens = screens.user.map(function (obj) {
-  return (<Stack.Screen name={obj.name} component={obj.component} key={obj.key} />)
+  return (<Stack.Screen name={obj.name} component={obj.component} options={obj.options} key={obj.key} />)
 })
 
 function MyTabs() {
@@ -126,11 +132,11 @@ function MyTabs() {
   );
 }
 
-const App = () => {
+export default function App() {
   return (
     <SafeAreaProvider>
       <NavigationContainer>
-        <Stack.Navigator initialRouteName="Tabs" headerMode="none" >
+        <Stack.Navigator initialRouteName="Welcome" >
           {authScreens}
           {userScreens}
         </Stack.Navigator>
@@ -138,5 +144,3 @@ const App = () => {
     </SafeAreaProvider>
   )
 }
-
-export default App;

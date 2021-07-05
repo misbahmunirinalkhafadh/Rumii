@@ -3,7 +3,7 @@ import { StyleSheet, Text } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { FocusAwareStatusBar, ProfileUser } from '../../hooks/useIsFocused';
 
-const Profile = () => {
+export default function Profile() {
     return (
         <SafeAreaView style={[styles.container, { backgroundColor: '#ecf0f1' }]}>
             <FocusAwareStatusBar barStyle="dark-content" backgroundColor="#ecf0f1" />
@@ -12,7 +12,6 @@ const Profile = () => {
         </SafeAreaView>
     )
 }
-export default Profile;
 
 const styles = StyleSheet.create({
     container: {
