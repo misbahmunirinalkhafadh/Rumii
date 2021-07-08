@@ -1,5 +1,7 @@
 import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
+import { RootStackParamList } from './screens/RootStackParams';
+import { RootBottomTabParamList } from './screens/RootBottomTabParams';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
@@ -14,23 +16,34 @@ import {
   SplashScreen
 } from './screens';
 
-const Stack = createStackNavigator();
-const Tab = createBottomTabNavigator();
+const Stack = createStackNavigator<RootStackParamList>();
+const Tab = createBottomTabNavigator<RootBottomTabParamList>();
+
+// interface AuthKey {
+//   key: number;
+//   name: string;
+//   component: () => string;
+// }
 
 const screens = {
   auth: [
     {
       key: 1,
+      name: 'Welcome',
+      component: WelcomeScreen,
+    },
+    {
+      key: 2,
       name: 'Login',
       component: SignInScreen,
     },
     {
-      key: 2,
+      key: 3,
       name: 'Registration',
       component: SignUpScreen,
     },
   ],
-  tabs: [
+  tab: [
     {
       key: 1,
       name: 'Home',
@@ -62,7 +75,7 @@ const screens = {
       },
     },
   ],
-  user: [
+  main: [
     {
       key: 1,
       name: 'Splash',
@@ -70,14 +83,6 @@ const screens = {
     },
     {
       key: 2,
-      name: 'Welcome',
-      component: WelcomeScreen,
-      options: {
-        headerShown: false
-      }
-    },
-    {
-      key: 3,
       name: 'Tabs',
       component: MyTabs,
       options: {
@@ -87,36 +92,36 @@ const screens = {
   ]
 }
 
-let authScreens = screens.auth.map(function (obj) {
-  return (<Stack.Screen name={obj.name} component={obj.component} options={{ headerShown: false }} key={obj.key} />)
-})
-let tabsScreens = screens.tabs.map(function (obj) {
+const authScreens = screens.auth.map(obj => {
+  return <Stack.Screen name={obj.name} component={obj.component} options={{ headerShown: false }} key={obj.key} />
+});
+const tabsScreens = screens.tab.map(function (obj) {
   return (<Tab.Screen name={obj.name} component={obj.component} options={obj.options} key={obj.key} />)
 })
-let userScreens = screens.user.map(function (obj) {
+const mainScreens = screens.main.map(function (obj) {
   return (<Stack.Screen name={obj.name} component={obj.component} options={obj.options} key={obj.key} />)
 })
 
 function MyTabs() {
   return (
     <Tab.Navigator
-      initialRouteName={screens.tabs[0].name}
+      initialRouteName={screens.tab[0].name}
       screenOptions={({ route }) => ({
         tabBarIcon: ({ focused, color, size }) => {
           let iconName = "";
 
-          if (route.name === screens.tabs[0].name) {
+          if (route.name === screens.tab[0].name) {
             iconName = focused
-              ? screens.tabs[0].icons.focus
-              : screens.tabs[0].icons.infocus;
-          } else if (route.name === screens.tabs[1].name) {
+              ? screens.tab[0].icons.focus
+              : screens.tab[0].icons.infocus;
+          } else if (route.name === screens.tab[1].name) {
             iconName = focused
-              ? screens.tabs[1].icons.focus
-              : screens.tabs[1].icons.infocus;
-          } else if (route.name === screens.tabs[2].name) {
+              ? screens.tab[1].icons.focus
+              : screens.tab[1].icons.infocus;
+          } else if (route.name === screens.tab[2].name) {
             iconName = focused
-              ? screens.tabs[2].icons.focus
-              : screens.tabs[2].icons.infocus;
+              ? screens.tab[2].icons.focus
+              : screens.tab[2].icons.infocus;
           }
 
           return <MaterialCommunityIcons name={iconName} size={size} color={color} />;
@@ -132,13 +137,13 @@ function MyTabs() {
   );
 }
 
-export default function App() {
+export default function() {
   return (
     <SafeAreaProvider>
       <NavigationContainer>
         <Stack.Navigator initialRouteName="Welcome" >
           {authScreens}
-          {userScreens}
+          {mainScreens}
         </Stack.Navigator>
       </NavigationContainer>
     </SafeAreaProvider>

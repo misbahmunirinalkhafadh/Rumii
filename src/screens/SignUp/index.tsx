@@ -1,11 +1,14 @@
-import React from 'react'
+import React from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { TextInput, TouchableOpacity } from 'react-native';
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
 import { FocusAwareStatusBar } from '../../hooks/useIsFocused';
+import { RootStackParamList } from '../RootStackParams';
+import { StackNavigationProp } from '@react-navigation/stack';
 
-export default function SignIn() {
-    const navigation = useNavigation();
+type signUpScreenProp = StackNavigationProp<RootStackParamList, 'Registration'>;;
+
+export default function SignUp() {
+    const navigation = useNavigation<signUpScreenProp>();
     const [username, setUsername] = React.useState('');
     const [password, setPassword] = React.useState('');
 
@@ -50,8 +53,7 @@ export default function SignIn() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        marginLeft: 10,
-        marginRight: 10,
+        margin: 25,
         justifyContent: 'center'
     },
     input: {

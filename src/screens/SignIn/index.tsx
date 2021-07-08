@@ -1,11 +1,14 @@
-import React from 'react'
+import React from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { TextInput, TouchableOpacity } from 'react-native';
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
 import { FocusAwareStatusBar } from '../../hooks/useIsFocused';
+import { RootStackParamList } from '../RootStackParams';
+import { StackNavigationProp } from '@react-navigation/stack';
+
+type signInScreenProp = StackNavigationProp<RootStackParamList, 'Login'>;
 
 export default function SignIn() {
-    const navigation = useNavigation();
+    const navigation = useNavigation<signInScreenProp>();
     const [username, setUsername] = React.useState('');
     const [password, setPassword] = React.useState('');
 
@@ -14,10 +17,10 @@ export default function SignIn() {
     return (
         <View style={styles.container}>
             <FocusAwareStatusBar barStyle="dark-content" />
-            <Text style={{ fontWeight: 'bold', fontSize: 29, marginBottom: 25 }}>Welcome!</Text>
+            <Text style={{ fontWeight: 'bold', fontSize: 29, marginBottom: 25 }}>Login!</Text>
             <TextInput
                 style={styles.input}
-                placeholder="Username"
+                placeholder="Email address"
                 value={username}
                 onChangeText={setUsername}
             />
@@ -42,8 +45,7 @@ export default function SignIn() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        marginLeft: 10,
-        marginRight: 10,
+        margin:25,
         justifyContent: 'center'
     },
     input: {
